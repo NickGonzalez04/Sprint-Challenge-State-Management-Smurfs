@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 
- class newSmurfForm extends React.Component {
+ class SmurfForm extends React.Component {
     state = {
         name: '',
         age: '',
@@ -12,19 +12,15 @@ import axios from 'axios';
         this.setState({ [e.target.name]: e.target.value })
     }
 
-      addNewSmurf = e => {
+      handleSubmit = e => {
         e.preventDefault();
-       const newSmurf = this.state
-        this.props.addNewSmurf(newSmurf)
-
-          this.setState({
-            name: '',
-            age: '',
-            height: '',
-        })
-    }
-
-
+       const addNewSmurf = {
+            name:this.state.name,
+            age:Number(this.state.age),
+            height: this.state.height,
+          
+        }
+    
 
             axios
              .post('http://localhost:3333/smurfs', addNewSmurf)
@@ -34,12 +30,12 @@ import axios from 'axios';
             .catch (err => {
                 console.log("error", err)
             })
-       
+        }   
 
       render() {
         return (
             <div>
-                <form onSubmit={this.addNewSmurf}>
+                <form onSubmit={this.handleSubmit}>
                     <input
                         type='text'
                         name='name'
@@ -69,4 +65,4 @@ import axios from 'axios';
         )
     }
 }
- export default newSmurfForm;
+ export default SmurfForm;

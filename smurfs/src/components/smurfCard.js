@@ -1,14 +1,13 @@
 import React from 'react';
-import { smurfContext } from '../components/context/smurfContext';
+import { useContext } from 'react';
+import { SmurfContext } from '../components/context/smurfContext';
 
 
-export const smurfCard = () => {
-    const { smurf } = useContext(smurfContext)
+ const SmurfCard = () => {
+    const { newSmurf } = useContext(SmurfContext);
  return (
      <div>
-
-         {smurf.map(smurf => (
-
+         {newSmurf.map(smurf => (
              <div>
                <h1>Smurf Name: {smurf.name}</h1>
                <h3> Age: {smurf.age}</h3>
@@ -20,3 +19,4 @@ export const smurfCard = () => {
  )
 }
 
+export default SmurfCard;
