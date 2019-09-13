@@ -1,5 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
+
+//components 
+import newSmurfForm from './smurfForm';
+import smurfCard from './smurfCard';
+
+
+
+
 class App extends Component {
   render() {
     return (
@@ -10,6 +18,13 @@ class App extends Component {
         <div>Have fun!</div>
       </div>
     );
+  }
+}
+
+
+const mapStateToProps = state => {
+  return {
+
   }
 }
 

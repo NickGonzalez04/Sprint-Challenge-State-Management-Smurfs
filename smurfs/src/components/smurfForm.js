@@ -1,6 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { addSmurf } from '../actions'
+import axios from 'axios';
 
  class newSmurfForm extends React.Component {
     state = {
@@ -16,7 +15,7 @@ import { addSmurf } from '../actions'
       addNewSmurf = e => {
         e.preventDefault();
        const newSmurf = this.state
-        this.props.addSmurf(newSmurf)
+        this.props.addNewSmurf(newSmurf)
 
           this.setState({
             name: '',
@@ -24,6 +23,18 @@ import { addSmurf } from '../actions'
             height: '',
         })
     }
+
+
+
+            axios
+             .post('http://localhost:3333/smurfs', addNewSmurf)
+             .then(res => {
+                console.log(res.data)
+            })
+            .catch (err => {
+                console.log("error", err)
+            })
+       
 
       render() {
         return (
@@ -50,7 +61,7 @@ import { addSmurf } from '../actions'
                         value={this.state.height}
                         onChange={this.handleChange}
                     />
-                    <button onClick={this.addNewSmurf}>
+                    <button type="submit">
                         Add Smurf
                     </button>
                 </form>
@@ -58,14 +69,4 @@ import { addSmurf } from '../actions'
         )
     }
 }
-
-  const mapStateToProps = state => {
-    return {
-        addingSmurf: state.addingSmurf
-    }
-}
-
-  export default connect(
-    mapStateToProps,
-    { addSmurf }
-)(SmurfForm)
+ export default newSmurfForm;
