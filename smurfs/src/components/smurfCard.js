@@ -1,7 +1,7 @@
-import react from 'react';
+import React from 'react';
 
 
-cont smurfCard = props => {
+export const smurfCard = props => {
  return (
      <div>
          <h1>Smurf Name: {props.name}</h1>
@@ -11,4 +11,3 @@ cont smurfCard = props => {
  )
 }
 
-export default smurfCard;
